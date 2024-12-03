@@ -7,11 +7,10 @@ def main():
     correct_patterns = 0
 
     with open(INPUT_FILE, "r") as file:
-        match = re.search(pattern, file)
-        if match:
-            correct_patterns += match.group(1) * match.group(2)
-        else:
-            pass
+        string = file.read().replace("\n", "")
+        match = re.findall(pattern, string)
+        for group in match:
+            correct_patterns += int(group[0]) * int(group[1])
 
     print(correct_patterns)
 
